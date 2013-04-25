@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Petr's Blog]]></title>
+  <link href="http://petrbela.com/blog/atom.xml" rel="self"/>
+  <link href="http://petrbela.com/blog/"/>
+  <updated>2013-04-25T02:35:20+02:00</updated>
+  <id>http://petrbela.com/blog/</id>
+  <author>
+    <name><![CDATA[Petr Bela]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
