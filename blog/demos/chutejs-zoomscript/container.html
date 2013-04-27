@@ -12,7 +12,7 @@
   </script>
   <!-- Template for a single data item -->
   <script class="asset-template" type="application/x-template">
-    <a href="{{ asset.url }}" data-zs-title="{{ asset.caption }}" class="asset"><img src="{{ asset.thumbnail }}" alt=""/></a>
+    <a href="{{ asset.url }}" data-zs-title="{{ asset.account.name }}" data-zs-text="{{ asset.caption }}" class="asset"><img src="{{ asset.thumbnail }}" alt=""/></a>
   </script>
 
   <script>
@@ -36,7 +36,8 @@
             pluginPath: 'lib/zoomscript',
             history: true,
             contentMode: {
-              containerId: 'container'
+              containerId: 'container',
+              fillArea: false
             }
           };
           jQuery('.asset').zoomscript(settings);
@@ -53,6 +54,6 @@
 
 <body>
   <div id="gallery" style="display: none;"></div>
-  <div id="container" style="width:500px; height:400px"></div>
+  <div id="container" style="width:600px; height:500px"></div>
 </body>
 </html>
