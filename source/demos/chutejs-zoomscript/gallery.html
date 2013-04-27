@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chute.js ZoomScript demo</title>
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="//code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
+  <script src="//cdn.getchute.com/v3/chute.min.js" data-load="view"></script>
+
+  <!-- Template for a container element -->
+  <script class="gallery-template" type="application/x-template">
+    <div class="assets"></div>
+  </script>
+  <!-- Template for a single data item -->
+  <script class="asset-template" type="application/x-template">
+    <a href="{{ asset.url }}" data-zs-title="{{ asset.caption }}" class="asset"><img src="{{ asset.thumbnail }}" alt=""/></a>
+  </script>
+
+  <script>
+    Chute.ready(function () {
+      // View and API components are loaded
+      var AssetView = Chute.View.extend({
+        template: 'script.asset-template'
+      });
+
+      var GalleryView = Chute.CollectionView.extend({
+        template: 'script.gallery-template',
+        dependencies: ['lib/zoomscript/jquery.zoomscript.min.js'],
+        itemView: AssetView,
+        initialize: function () { // custom initialize function
+          this.on('render', $.proxy(this.setup, this)); // run setup() method after view was rendered
+        },
+
+        setup: function () {
+          // zoomscript settings
+          var settings = {
+            pluginPath: 'lib/zoomscript',
+            history: true
+          };
+          jQuery('.asset').zoomscript(settings);
+        }
+      });
+
+      var gallery = new GalleryView({
+        container: 'div#gallery',
+        data: new Chute.API.Assets({ album: '9Zurmdfe' }).toData() // set an incoming data collection
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="gallery"></div>
+</body>
+</html>
